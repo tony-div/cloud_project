@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  db_file:
+    image: db_file
+    restart: always
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_USER: "root"
+      MYSQL_DATABASE: "studentdb"
+      
+    volumes:
+      - mysql:/var/lib/mysql
+    networks:
+      - web_server
+  web_file:
+    image: web_file
+    restart: always
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db_file
+    environment:
+      MYSQL_DB_USER: "root"
+      MYSQL_DATABASE: "studentdb"
+    networks:
+      - web_server
+
+networks:
+    web_server:
+volumes:
+  mysql:
+
