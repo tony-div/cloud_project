@@ -5,11 +5,11 @@ app = Flask(__name__)
 
 # Connect to MySQL database
 mydb = mysql.connector.connect(
-    host="localhost",
-    port=3307, 
+    host="db_file",
+    port=3306, 
     user="root",
     password="Sa297#2007ma",
-    database="studentdb"
+    database="Studentdb"
 )
 
 @app.route('/')
@@ -25,4 +25,4 @@ def get_student_info():
     return jsonify(students)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)

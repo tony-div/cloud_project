@@ -3,17 +3,11 @@ version: '3.8'
 services:
   db_file:
     image: db_file
-    restart: always
     ports:
       - "3307:3306"
     environment:
-      MYSQL_USER: "root"
-      MYSQL_DATABASE: "studentdb"
-      
-    volumes:
-      - mysql:/var/lib/mysql
-    networks:
-      - web_server
+      MYSQL_DATABASE: "Studentdb"
+      MYSQL_ROOT_PASSWORD: Sa297#2007ma
   web_file:
     image: web_file
     restart: always
@@ -23,12 +17,3 @@ services:
       - db_file
     environment:
       MYSQL_DB_USER: "root"
-      MYSQL_DATABASE: "studentdb"
-    networks:
-      - web_server
-
-networks:
-    web_server:
-volumes:
-  mysql:
-

@@ -1,5 +1,5 @@
 # Use the official Python image as the base image
-FROM python:3.9-slim
+FROM python
 
 # Install Flask and other dependencies
 RUN pip install Flask mysql-connector-python
@@ -15,3 +15,4 @@ EXPOSE 5000
 
 # Define the command to run the Flask app
 CMD ["python", "app.py"]
+# docker build -t web_file .
